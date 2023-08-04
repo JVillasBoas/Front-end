@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 1 - Em uma página html execute os seguintes comandos JS
+        Perguntar se quer imprimir o seu nome em um confirm
+        Se não – dar alert “Tchau”
+        Se sim –
+        • Perguntar em um prompt o nome do usuário,
+        • guarde o dado em uma variável,
+        • Pergunte em um prompt o sobrenome
+        • guarde em uma variável
+        • concatene o nome e sobrenome em uma terceira variável
+        • pergunte em um prompt quantas vezes quer imprimir o nome_sobrenome
+        • e depois com o document.write imprimir nome_sobrenome o número de vezes
+        correspondentes (um nome por linha)
+        •
+        * Dica: Utilize a ferramenta do desenvolvedor do google chrome (aba console)
+        para ajudar no debug e desenvolvimento da página. (utilize o comando
+        console.log)
+        --------------- --> */
+        let nome, sobrenome, nome_completo, vezes
+        if(confirm("Olá, você quer imprimir seu nome?")) {
+            nome = prompt("Qual o seu primeiro nome?");
+            sobrenome = prompt("Qual o seu sobrenome nome?");
+            nome_completo = nome +" "+sobrenome;
+            vezes = Number(prompt("Quantas vezes você quer escrever seu nome?"));
+            for(c=1;c<vezes;c++) {
+                document.write(nome_completo + "<br>");
+            }
+        } else {
+            alert("Tchau!");
+        }
+        /* 2- Em uma página HTML construa as seguintes funções e comandos JS
+        Construir uma função chamada declarationMed (function declaration) que recebe 3
+        números como parâmetro e retorna a média destes números
+        Chame a função passando os 3 números, guarde o retorno em uma variável e depois
+        imprima a variável com document.write
+        Construir uma função similar chamada anonimaMed só que na sintaxe anonima
+        Chame a função passando 3 números, guarde o retorno em uma variável e depois
+        imprima a variável em um alert
+        Construir uma função similar chamada arrowMed só que na sintaxe arrow
+        Chame a função passando 3 números, guarde o retorno em uma variável e depois
+        imprima a variável no console através do console.log(var). Para visualizar o
+        console utilize a ferramenta do desenvolvedor do google chrome (aba console)
+        * Nos dois exercícios utilizar let em todas declarações de variável. Todas
+        variáveis devem ser declaradas. */
+            function declarationMed(n1,n2,n3) {
+                let media = ((n1 + n2 + n3)/3);
+                return media
+            }
+            let anonimaMed = function declarationMed(n1,n2,n3) {
+                let media = ((n1 + n2 + n3)/3);
+                return media
+            }
+            let arrowMed = (n1,n2,n3) => {return (n1 + n2 + n3)/3}
+
+            //chamando as funções
+            let media = declarationMed(3, 6, 12);
+            document.write(mediaDeclaration);
+
+            let mediaAnonima = anonimaMed(3, 6, 12);
+            window.alert(mediaAnonima);
+
+            let arrowMedia = arrowMed(3, 6, 12);
+            console.log(arrowMedia);
+
+
+    </script>
+</body>
+</html>
