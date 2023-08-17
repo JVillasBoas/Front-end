@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+<body>
+    <input type="button" id="botao" value="Ir para uma posição aleatória">
+    <div id="elementoDiv">A div está aqui</div>
+    <script>
+    function mudarposicao() {
+        document.querySelector("#elementoDiv").style.left = Math.random() * 800 + '100px';
+        document.querySelector("#elementoDiv").style.top = Math.random() * 800 + '100px';
+        document.querySelector("#elementoDiv").style.backgroundColor = "pink";
+    }
+    document.querySelector("#botao").addEventListener("click", mudarposicao);
+    </script>
+    <style>
+    #elementoDiv {
+        width: 80px;
+        height: 80px;
+        background-color: purple;
+        position: relative;
+        text-align: center;
+        padding: 10px;
+    }
+    </style>
+</body>
+</html>

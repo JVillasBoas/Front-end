@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Alunos: <input type="number" id="quantidade"><br>
+    <input type="button" value="Cadastrar" id="botao">
+    <div id="camposTexto"></div>
+    <script>
+        function cadastrar() {
+            var quantidade =  parseInt(document.querySelector("#quantidade").value);
+            camposTexto.innerHTML = ''; // Limpar campos anteriores
+            for(c=1;c<=quantidade;c++) {
+                var campos = document.createElement("input");
+                campos.type = "text";
+                campos.placeholder = "Aluno " + c;
+                camposTexto.appendChild(campos);
+            }
+        }
+        document.querySelector("#botao").addEventListener("click", cadastrar);
+    </script>
+</body>
+</html>

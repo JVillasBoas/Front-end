@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exercício 2 </title>
+</head>
+<body>
+       <input type="button" id="enviar" value="Clique aqui!">
+       <script>
+        function lista(){
+         let b=document.createElement("ul"); // cria um elemento do html no javascript
+         let c=document.createElement("li");
+         let d=document.createElement("li");
+         let e=document.createElement("li");
+         let f=document.createElement("li");
+         let g=document.createTextNode("Alface"); // cria um elemento do texto 
+         let h=document.createTextNode("Cebola");
+         let i=document.createTextNode("Tomate");
+         let j=document.createTextNode("Couve");
+           c.appendChild(g); // eh como tu vai pendurar um elemento dentro do outro, append pegar a criança
+           d.appendChild(h);
+           e.appendChild(i);
+           f.appendChild(j);
+           b.appendChild(c);
+           b.appendChild(d);
+           b.appendChild(e);
+           b.appendChild(f);
+           document.body.appendChild(b); // o body esta guardando o b dentro de si. 
+        }
+
+        a=document.querySelector("#enviar");
+        a.addEventListener("click", lista );
+
+       </script>
+</body>
+</html>

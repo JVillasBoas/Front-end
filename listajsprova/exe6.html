@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 6</title>
+</head>
+<body>
+    <select id="valores" name="select">
+        <option value="valor1">Valor 1</option>
+        <option value="valor2">Valor 2</option>
+        <option value="valor3">Valor 3</option>
+      </select>
+    <script>
+        function alertar() {
+            if(document.querySelector("#valores").options[document.querySelector("#valores").selectedIndex].value == "valor1") {
+                alert("Valor 1");
+            }
+            if(document.querySelector("#valores").options[document.querySelector("#valores").selectedIndex].value == "valor2") {
+                alert("Valor 2");
+            }
+            if(document.querySelector("#valores").options[document.querySelector("#valores").selectedIndex].value == "valor3") {
+                alert("Valor 3");
+            }
+        }
+    document.querySelector("#valores").addEventListener("change", alertar);
+    </script>
+</body>
+</html>
