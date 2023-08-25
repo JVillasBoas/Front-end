@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>Estoque de compras</title>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Produtos em estoque</legend>
+        <label for="nome">Nome Loja:</label>
+        <input type="text" name="nome" id="nome" value="" /><br /><br />
+        <label for="data">Data:</label>
+        <input type="text" name="data" id="data" value="" /><br /><br />
+        <input
+          type="button"
+          value="Alterar Nome  e Data"
+          onclick="alteraNomeData()"
+        /><br /><br />
+        -------------------------------------<br />
+        Adicionar produtos ao estoque<br /><br />
+        <label for="nome_produto">Produto:</label>
+        <input type="text" name="nome" id="nome_produto" /><br /><br />
+        <label for="preco">Preco: </label>
+        <input type="text" name="nome" id="preco" /><br /><br />
+        <label for="quantidade">Quantidade: </label>
+        <input type="text" name="nome" id="quantidade" /><br /><br /><input
+          type="button"
+          value="Adicionar Produto ao estoque"
+          onclick="insereProd()"
+        /><br /><br />
+        -------------------------------------<br />
+        Produtos em estoque
+        <div id="lista">...</div>
+      </fieldset>
+    </form>
+
+    <script>
+      let estoque = {
+        nome: "Fulano de Tal",
+        data: "11/11/2014",
+        produtos: [
+      ]
+      };
+
+      function mostra() {
+        let valor = "";
+        let total = 0;
+        valor +=
+          "Nome Loja: " +
+          estoque.nome +
+          "<br>" +
+          "Data: " +
+          estoque.data +
+          "<br><BR> Estoque:<br>";
+
+        for (let i = 0; i < estoque.produtos.length; i++) {
+          valor += "Produto: " + estoque.produtos[i].nome_produto;
+          valor += "-----------------";
+          valor += "Preco: " + estoque.produtos[i].preco;
+          valor += "-----------------";
+          valor += "Quantidade: " + estoque.produtos[i].quantidade;
+          valor += "-----------------";
+          valor += "Subtotal: " + estoque.produtos[i].preco * estoque.produtos[i].quantidade;
+          valor += "-----------------";
+          valor +=
+            "<input type='button'  value='Excluir' onclick = 'excluirProd(" +
+            i +
+            ")'>";
+          valor += "<br>";
+          total += estoque.produtos[i].preco * estoque.produtos[i].quantidade;
+        }
+        valor += "Valor total " + total;
+        document.querySelector("#lista").innerHTML = valor;
+      }
+
+      function alteraNomeData() {
+        estoque.nome = document.querySelector("#nome").value;
+        estoque.data = document.querySelector("#data").value;
+        mostra();
+      }
+
+      function insereProd() {
+        estoque.produtos.push({
+          nome_produto: document.querySelector("#nome_produto").value,
+          preco: document.querySelector("#preco").value,
+          quantidade: document.querySelector("#quantidade").value
+        });
+        mostra();
+      }
+      function excluirProd(num) {
+        estoque.produtos.splice(num, 1);
+        mostra();
+      }
+    </script>
+  </body>
+</html>
