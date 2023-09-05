@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+</head>
+<body>
+    <section>
+        <h1>To Do List</h1>
+        <button id="gravar" value="gravar">Gravar</button>
+        <button id="recuperar" value="recuperar">Recuperar</button>
+        <button id="nova" value="nova">Nova</button>
+        <br><br>
+        Insira a tarefa:<input type="text" id="tarefa">
+        <button id="enviar">Enviar</button>
+        <br><br>
+        <div id="lista"></div>
+    </section>
+    <script>
+        document.querySelector('#gravar').addEventListener('click', gravar);
+        document.querySelector('#recuperar').addEventListener('click', recuperar);
+        document.querySelector('#enviar').addEventListener('click', insereTarefa);
+        document.querySelector('#nova').addEventListener('click', nova);
+
+        let lista = [];
+
+        function mostra() {
+                let lista_corpo = document.createElement("ul");
+                for (let i = 0; i < lista.length; i++) {
+                    let lista_item = document.createElement("li");
+                    let lista_texto = document.createTextNode(lista[i]);
+                    lista_item.appendChild(lista_texto);
+                    lista_corpo.appendChild(lista_item);
+                }
+                document.querySelector("#lista").innerHTML = "";
+                document.querySelector("#lista").appendChild(lista_corpo);
+            }
+
+        function insereTarefa() {
+            lista.push (
+                document.querySelector("#tarefa").value
+            );
+            mostra();
+        }
+        //fazer ainda
+        function excluiTarefa(num) {
+            lista.splice(num,1);
+            mostra();
+        }
+        function gravar() {
+            localStorage.setItem("lista",JSON.stringify(lista));
+        }
+        function recuperar() {
+            lista_antiga=localStorage.getItem("lista");
+            lista=JSON.parse(lista_antiga);
+            mostra();
+        }
+        function nova() {
+            document.querySelector("#lista").innerHTML = "";
+            lista = [];
+        }
+    </script>
+</body>
+</html>
