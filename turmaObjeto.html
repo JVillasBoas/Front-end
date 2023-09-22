@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turma Classe e Objeto</title>
+</head>
+<body>
+    <h1>Instituto Federal do Rio Grande do Sul</h1>
+    <div id="dados"></div>
+    <script>
+        class pessoa {
+            constructor(nome,cpf) {
+                this.cpf = cpf;
+                this.nome = nome
+            }
+        }
+        class professor extends pessoa {
+            constructor(nome,cpf,tel,area) {
+                super(nome,cpf);
+                this.telefone = tel;
+                this.area = area;
+            }
+        }
+        class aluno extends pessoa {
+            constructor(nome,cpf,matricula) {
+            super(nome,cpf);
+            this.matricula = matricula;
+            }
+            imprimeLista() {
+                    let dados = document.querySelector("#dados");
+                    let lista = document.createElement("ul");
+                    let listaItem = document.createElement("li");
+                    listaItem.innerHTML = this.nome;
+                    lista.appendChild(listaItem);
+                    dados.appendChild(lista);
+                    
+            }
+        }
+        class turma {
+            constructor(ident,aluno,professor) {
+                this.identificação = ident;
+                this.aluno = aluno;
+                this.professor = professor;
+            }
+            imprimeDados() {
+                    let dados = document.querySelector("#dados");
+                    let turma = document.createElement("div");
+                    turma.innerHTML = "Turma: " + this.identificação;
+                    dados.appendChild(turma);
+                    let professor = document.createElement("div");
+                    professor.innerHTML = "Professor " + this.professor.nome;
+                    dados.appendChild(professor);
+                    let texto = document.createTextNode("Lista de alunos:");
+                    dados.appendChild(texto);
+                    this.aluno.forEach(aluno=>aluno.imprimeLista());
+                }
+        }
+    const a1 = new aluno("Artur de Oliveira", "1293", "0002");
+    const a2 = new aluno("Luize Juliano", "1293", "0001");
+    const a3 = new aluno("Rafael Santos", "1293", "0003");
+    const a4 = new aluno("Pedro Silveira", "1293", "0004");
+    const a5 = new aluno("Laura Juliano", "1293", "0005");
+    const a6 = new aluno("Luiza Rosado", "1293", "0006");
+    const a7 = new aluno("João Neto", "1293", "0007");
+    const a8 = new aluno("Paolla Varella", "1293", "0008");
+    const alunos=[];
+    alunos.push(a1);
+    alunos.push(a2);
+    alunos.push(a3);
+    alunos.push(a8);
+    const alunos2 = [];
+    alunos2.push(a4);
+    alunos2.push(a5);
+    alunos2.push(a6);
+    alunos2.push(a7);
+    const p1 = new professor("Thiago Lopes", "1289","9876","Técnico");
+    const p2 = new professor("André Planta", "1089","9336","Matemática");
+    const t1 = new turma("1c",alunos,p1);
+    t1.imprimeDados();
+    const t2 = new turma("1c1",alunos2,p2);
+    t2.imprimeDados();
+    </script>
+</body>
+</html>
