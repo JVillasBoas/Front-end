@@ -29,10 +29,16 @@
             }
             imprimeLista() {
                     let dados = document.querySelector("#dados");
-                    let lista = document.createElement("ul");
-                    let listaItem = document.createElement("li");
-                    listaItem.innerHTML = this.nome;
-                    lista.appendChild(listaItem);
+                    let lista = document.createElement("dl");
+                    let listaNome = document.createElement("li");
+                    listaNome.innerHTML = this.nome;
+                    let listaCPF = document.createElement("dd");
+                    listaCPF.innerHTML = "CPF: " + this.cpf;
+                    let listaMatricula = document.createElement("dd");
+                    listaMatricula.innerHTML = "Matricula: " + this.matricula;
+                    lista.appendChild(listaNome);
+                    lista.appendChild(listaMatricula);
+                    lista.appendChild(listaCPF);
                     dados.appendChild(lista);
                     
             }
@@ -46,24 +52,29 @@
             imprimeDados() {
                     let dados = document.querySelector("#dados");
                     let turma = document.createElement("div");
+                    let n1 = document.createElement("br");
+                    let n2 = document.createElement("br");
                     turma.innerHTML = "Turma: " + this.identificação;
                     dados.appendChild(turma);
+                    dados.appendChild(n1);
                     let professor = document.createElement("div");
-                    professor.innerHTML = "Professor " + this.professor.nome;
+                    professor.innerHTML = "Professor: " + this.professor.nome + "<br>" +"CPF do Professor: " + this.professor.cpf 
+                    + "<br>" + "Tel do Professor: " + this.professor.telefone + "<br>" + "Área do Professor: " + this.professor.area;
                     dados.appendChild(professor);
+                    dados.appendChild(n2);
                     let texto = document.createTextNode("Lista de alunos:");
                     dados.appendChild(texto);
                     this.aluno.forEach(aluno=>aluno.imprimeLista());
                 }
         }
-    const a1 = new aluno("Artur de Oliveira", "1293", "0002");
-    const a2 = new aluno("Luize Juliano", "1293", "0001");
-    const a3 = new aluno("Rafael Santos", "1293", "0003");
-    const a4 = new aluno("Pedro Silveira", "1293", "0004");
-    const a5 = new aluno("Laura Juliano", "1293", "0005");
-    const a6 = new aluno("Luiza Rosado", "1293", "0006");
-    const a7 = new aluno("João Neto", "1293", "0007");
-    const a8 = new aluno("Paolla Varella", "1293", "0008");
+    const a1 = new aluno("Artur de Oliveira", "9854726518", "0002");
+    const a2 = new aluno("Luize Juliano", "78518652145", "0001");
+    const a3 = new aluno("Rafael Santos", "85471526574", "0003");
+    const a4 = new aluno("Pedro Silveira", "8547152597", "0004");
+    const a5 = new aluno("Laura Juliano", "01478523698", "0005");
+    const a6 = new aluno("Luiza Rosado", "84516239745", "0006");
+    const a7 = new aluno("João Neto", "85494848576", "0007");
+    const a8 = new aluno("Paolla Varella", "14789632587", "0008");
     const alunos=[];
     alunos.push(a1);
     alunos.push(a2);
@@ -74,11 +85,11 @@
     alunos2.push(a5);
     alunos2.push(a6);
     alunos2.push(a7);
-    const p1 = new professor("Thiago Lopes", "1289","9876","Técnico");
-    const p2 = new professor("André Planta", "1089","9336","Matemática");
-    const t1 = new turma("1c",alunos,p1);
+    const p1 = new professor("Thiago Lopes", "1289515851","98768484","Programação");
+    const p2 = new professor("André Planta", "1089787789","93367849","Matemática");
+    const t1 = new turma("Front-end sendo Front-end",alunos,p1);
     t1.imprimeDados();
-    const t2 = new turma("1c1",alunos2,p2);
+    const t2 = new turma("Matemática é Linda",alunos2,p2);
     t2.imprimeDados();
     </script>
 </body>
